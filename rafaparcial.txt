@@ -1,0 +1,20 @@
+  Pasos para levantar el proyecto
+
+  1. Abrir IntelliJ → Open → selecciona E:\Downloads\EPPenaPC05
+  2. Crear la BD en PostgreSQL: CREATE DATABASE "BDParcialRafael";
+  3. Insertar datos de prueba en BD:
+  -- Usuario DEVELOPER
+  INSERT INTO users (rjph_username, rjph_password, rjph_enabled)
+  VALUES ('developer1', '$2a$10$...(bcrypt de "123456")', true);
+  INSERT INTO roles (rjph_rol, user_id) VALUES ('DEVELOPER', 1);
+
+  -- Usuario MANAGEMENT
+  INSERT INTO users (rjph_username, rjph_password, rjph_enabled)
+  VALUES ('manager1', '$2a$10$...(bcrypt de "123456")', true);
+  INSERT INTO roles (rjph_rol, user_id) VALUES ('MANAGEMENT', 2);
+
+  -- ProductBacklog (necesario para HU02)
+  INSERT INTO product_backlog (rjph_nombre, rjph_objetivo, rjph_version, rjph_cantidad_historias, rjph_prioridad_global)
+  VALUES ('Backlog Principal', 'Gestión de sprints', '1.0', 0, 1);
+  4. Para el password BCrypt, usa el endpoint de referencia o genera uno con new BCryptPasswordEncoder().encode("123456")
+  5. Swagger UI: http://localhost:8085/swagger-ui.html — usa el botón Authorize con el token Bearer
